@@ -60,6 +60,7 @@ class OAuth2Auth(www.WwwTestMixin, unittest.TestCase):
 
         self.googleAuth = oauth2.GoogleAuth("ggclientID", "clientSECRET")
         self.githubAuth = oauth2.GitHubAuth("ghclientID", "clientSECRET")
+        self.bitbucketAuth = oauth2.ButbucketAuth("bbclientID", "clientSECRET")
         self.gitlabAuth = oauth2.GitLabAuth(
             "https://gitlab.test/", "glclientID", "clientSECRET")
 
@@ -208,13 +209,13 @@ class OAuth2Auth(www.WwwTestMixin, unittest.TestCase):
 # point OAUTHCONF environment variable to a file with following params:
 #  {
 #  "GitHubAuth": {
-#     "CLIENTID": "XX
+#     "CLIENTID": "XX",
 #     "CLIENTSECRET": "XX"
 #  },
 #  "GoogleAuth": {
 #     "CLIENTID": "XX",
 #     "CLIENTSECRET": "XX"
-#  }
+#  },
 #  "GitLabAuth": {
 #     "INSTANCEURI": "XX",
 #     "CLIENTID": "XX",
@@ -301,6 +302,8 @@ class OAuth2AuthGitHubE2E(www.WwwTestMixin, unittest.TestCase):
 class OAuth2AuthGoogleE2E(OAuth2AuthGitHubE2E):
     authClass = "GoogleAuth"
 
+class OAuth2AuthBitbucketE2E(OAuth2AuthGitHubE2E):
+    authClass = "bitbucketAuth"
 
 class OAuth2AuthGitLabE2E(OAuth2AuthGitHubE2E):
     authClass = "GitLabAuth"
